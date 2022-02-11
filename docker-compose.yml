@@ -1,8 +1,8 @@
 version: '3.7'
 
 services:
-  boilerplate-apollo:
-    container_name: boilerplate-apollo
+  rune-testnet:
+    container_name: rune-testnet
     build:
       context: .
       dockerfile: Dockerfile

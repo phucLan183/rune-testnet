@@ -9,7 +9,7 @@ import { intervalConsume } from './service'
     await connectMongo(MONGO_URI)
     connectWeb3(WEB3_PROVIDER)
     await startApolloServer(PORT)
-    // intervalConsume({ stepBlock: STEP_BLOCK })
+    intervalConsume({ stepBlock: STEP_BLOCK })
   } catch (error) {
     console.log(error);
   }
