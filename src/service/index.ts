@@ -2,21 +2,27 @@ import { RuneCollection, mongoClient } from '../database/mongodb';
 import { Decimal128 } from 'mongodb';
 import { stoneContract, web3 } from '../web3'
 import { getSoilTransfer, getStoneTransfer, getWoodTransfer, getRubberTransfer, getPlasticTransfer, getCrystalTransfer, getMetalTransfer, getGemTransfer, getOnixiusTransfer, getCryptonTransfer, getPythiumTransfer, getParaniumTransfer } from './rune'
+import { START_BLOCK } from '../config';
 // import { typeRune } from '../common'
 
 
-const getPastEventsOptions = (startBlock: number, stepBlock: number, latestBlock: number) => {
+const getPastEventsOptions = async (startBlock: number, stepBlock: number, latestBlock: number) => {
   const currentBlockWithStepBlock = startBlock + stepBlock
   let toBlock = currentBlockWithStepBlock >= latestBlock ? latestBlock : currentBlockWithStepBlock
   return { fromBlock: startBlock, toBlock }
 }
 
-export const intervalConsume = async (startBlock: number, stepBlock: number) => {
+export const intervalConsume = async (options: { startBlock?: number, stepBlock: number }) => {
+  let { startBlock, stepBlock } = options
   try {
+    if (!startBlock) {
+      const dataRune = await RuneCollection.find().sort({ _id: -1 }).limit(1).toArray()
+      startBlock = dataRune.length ? dataRune[0].blockNumber : START_BLOCK
+    }
     const latestBlock = await web3.eth.getBlockNumber()
     if (startBlock >= latestBlock) startBlock = latestBlock
 
-    let options = getPastEventsOptions(startBlock, stepBlock, latestBlock)
+    let options = await getPastEventsOptions(startBlock, stepBlock, latestBlock)
 
     console.table({ startBlock: options.fromBlock, toBlock: options.toBlock, latestBlock: latestBlock });
 
@@ -41,7 +47,7 @@ export const intervalConsume = async (startBlock: number, stepBlock: number) => 
     throw error
   } finally {
     setTimeout(() => {
-      intervalConsume(startBlock, stepBlock)
+      intervalConsume({ startBlock, stepBlock })
     }, 3000)
   }
 }

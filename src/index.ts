@@ -5,13 +5,13 @@ import { connectWeb3 } from './web3';
 import { intervalConsume } from './service'
 
 (async () => {
-    try {
-      await connectMongo(MONGO_URI)
-      connectWeb3(WEB3_PROVIDER)
-      await startApolloServer(PORT)
-      // intervalConsume(START_BLOCK, STEP_BLOCK)
-    } catch (error) {
-      console.log(error);
-    }
-  })()
+  try {
+    await connectMongo(MONGO_URI)
+    connectWeb3(WEB3_PROVIDER)
+    await startApolloServer(PORT)
+    // intervalConsume({ stepBlock: STEP_BLOCK })
+  } catch (error) {
+    console.log(error);
+  }
+})()
 
