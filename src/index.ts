@@ -1,5 +1,5 @@
 import { connectMongo } from './database/mongodb';
-import { PORT, MONGO_URI, WEB3_PROVIDER, START_BLOCK, STEP_BLOCK } from './config';
+import { PORT, MONGO_URI, WEB3_PROVIDER, STEP_BLOCK } from './config';
 import { startApolloServer } from './apollo';
 import { connectWeb3 } from './web3';
 import { intervalConsume } from './service'

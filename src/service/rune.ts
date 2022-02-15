@@ -12,7 +12,7 @@ export const getSoilTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -49,7 +49,7 @@ export const getStoneTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -86,7 +86,7 @@ export const getWoodTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -123,7 +123,7 @@ export const getRubberTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -160,7 +160,7 @@ export const getPlasticTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -197,7 +197,7 @@ export const getCrystalTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -234,7 +234,7 @@ export const getMetalTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -271,7 +271,7 @@ export const getGemTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -345,7 +345,7 @@ export const getCryptonTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -382,7 +382,7 @@ export const getPythiumTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
@@ -419,7 +419,7 @@ export const getParaniumTransfer = async (options: any) => {
       for (const event of transferEvent) {
         const dataBlock = await web3.eth.getBlock(event.blockNumber)
         await session.withTransaction(async () => {
-          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] })
+          const dataParallel = await RuneCollection.findOne({ blockId: event["id"] }, { session })
           if (!dataParallel) {
             await RuneCollection.insertOne({
               blockNumber: event.blockNumber,
